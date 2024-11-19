@@ -1,6 +1,6 @@
 // tailwind.config.js
 export default {
-  darkMode: 'media',
+  darkMode: 'dark',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 
   theme: {
