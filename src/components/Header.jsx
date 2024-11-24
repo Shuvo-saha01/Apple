@@ -1,9 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "./Carousel";
+import laptop from '../laptop';
+import phone from "../phone"
+import computer from '../computer'
+import watch from '../watch'
+import Card from "./Card";
 
 function Header() {
   const [darkMode, setDarkMode] = useState(false);
   const [dropToggle, setDropToggle] = useState(false);
+  const [item ,setItem] = useState(phone)
+
+  const setPhone = () => {
+    setItem(phone)
+  } 
+  const setLaptop = () => {
+    setItem(laptop)
+  } 
+  const setComputer = () => {
+    setItem(computer)
+  } 
+  const setWatch = () => {
+    setItem(wat)
+  } 
+
+
 
   const toggle = () => {
     setDarkMode(!darkMode);
@@ -32,6 +53,7 @@ function Header() {
     "./images/Carousal.png",
     "./images/Carousal.png",
   ];
+
 
   return (
     <div id="body" className="  dark:bg-black overflow-x-hidden">
@@ -192,30 +214,35 @@ function Header() {
           Products
         </h1>
         <div className="hidden md:flex justify-center mt-10 gap-[80px]">
-          <button>
+          <button onClick={setPhone}>
             <div className="flex flex-col justify-center items-center border-black border-2 rounded-xl w-[140px] h-[120px]">
               <img className="" src="./images/phoneBlack.png" alt="" />
               <h1 className="text-black font-poppins text-xl">Phones</h1>
             </div>
           </button>
-          <button>
+          <button onClick={setLaptop}>
             <div className="flex flex-col justify-center items-center border-black border-2 rounded-xl w-[140px] h-[120px]">
               <img className="" src="./images/laptopBlack.png" alt="" />
               <h1 className="text-black font-poppins text-xl">Laptops</h1>
             </div>
           </button>
-          <button>
+          <button onClick={setWatch}>
             <div className="flex flex-col justify-center items-center border-black border-2 rounded-xl w-[140px] h-[120px]">
               <img className="" src="./images/watchBlack.png" alt="" />
               <h1 className="text-black font-poppins text-xl">Watches</h1>
             </div>
           </button>
-          <button>
+          <button onClick={setComputer}>
             <div className="flex flex-col justify-center items-center border-black border-2 rounded-xl w-[140px] h-[120px]">
               <img className="" src="./images/pcBlack.png" alt="" />
               <h1 className="text-black font-poppins text-xl">Computers</h1>
             </div>
           </button>
+        </div>
+        <div id="productList" className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {item.map((item,index) => {
+            return <Card key={index} data={item} />
+          })}
         </div>
       </div>
     </div>
